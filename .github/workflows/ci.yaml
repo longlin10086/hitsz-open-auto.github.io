@@ -56,9 +56,7 @@ jobs:
             python-version: '3.x'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install requests
+        run: pip install -r scripts/requirements.txt
 
       - name: Setup Pages
         id: pages
@@ -326,7 +324,8 @@ jobs:
             done
           done
 
-      - uses: EndBug/add-and-commit@v9
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9
         with:
           add: 'content'
           default_author: github_actions
